@@ -1,0 +1,59 @@
+html {
+  color: white;
+}
+
+body {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+}
+
+.demo-cta {
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  color: #FCFFF5;
+  background-color: #91AA9D;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  max-width: 320px;
+  margin: 25px auto 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.demo-cta:hover {
+  background-color: #FCFFF5;
+  color: #91AA9D;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3), 0 0 0 3px #91AA9D inset;
+}
+
+.demo {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #193441;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+}
+.demo-intro {
+  padding: 90px 0;
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: center;
+}
+  .demo-intro p {
+    font-weight: 300;
+    font-size: 16px;
+  }
+

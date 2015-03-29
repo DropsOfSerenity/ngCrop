@@ -1,0 +1,49 @@
+<html ng-app="demo">
+<head>
+  <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog-theme-default.min.css"/>
+  <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Montserrat:700|Pacifico' rel='stylesheet' type='text/css'>
+
+  <script src="../bower_components/angular/angular.min.js"></script>
+  <script src="../bower_components/ngDialog/js/ngDialog.min.js"></script>
+  <script src="../lib/ngCrop.js"></script>
+
+  <script type="text/ng-template" id="cropModal.html">
+    <div class="ngdialog-message">
+      <h3>Upload and Crop</h3>
+    </div>
+    <div class="ngdialog-buttons">
+      <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">Cancel</button>
+      <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="cropAndClose()">Crop and Save</button>
+    </div>
+  </script>
+
+  <script>
+    angular.module('demo', ['ngCrop'])
+      .controller('MainCtrl', function($scope, ngCrop) {
+        $scope.show = function() {
+          ngCrop.show().then(function(res) {
+            console.dir(res);
+          }).catch(function() {
+            console.log('nothing happened');
+          })
+        }
+      });
+  </script>
+</head>
+
+<body ng-controller="MainCtrl">
+<section class="demo">
+  <div class="demo-intro">
+    <h1>ngCrop</h1>
+    <p>
+      ngCrop is a simple, drop in angular service that allows for easy image
+      cropping. Use it for your avatar upload and crop needs!
+    </p>
+    <button class="demo-cta" ng-click="show()">Show Cropper</button>
+  </div>
+</section>
+</body>
+
+</html>
