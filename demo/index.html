@@ -4,18 +4,42 @@
   <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog.min.css"/>
   <link rel="stylesheet" href="styles.css"/>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Montserrat:700|Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="../lib/ngCrop.css"/>
 
   <script src="../bower_components/angular/angular.min.js"></script>
+  <script src="../bower_components/ng-file-upload/angular-file-upload-all.min.js"></script>
   <script src="../bower_components/ngDialog/js/ngDialog.min.js"></script>
   <script src="../lib/ngCrop.js"></script>
 
   <script type="text/ng-template" id="cropModal.html">
     <div class="ngdialog-message">
       <h3>Upload and Crop</h3>
+      <div ng-class="{'ng-hide': state != 'upload'}">
+        <div
+          class="file-drop"
+          ng-file-drop ng-model="myFiles"
+          ng-file-change="fileDropped($files, $event, $rejectedFiles)"
+          ng-multiple="false"
+          ng-accept="'image/*'"
+          drag-over-class="{accept:'acceptClass', reject:'rejectClass', delay: 100}"
+          stop-propogation="true"
+          hide-on-drop-not-available="true">
+        </div>
+        <button type="file" class="ngcrop-button"
+                ng-file-select ng-model="myFiles"
+                ng-file-change="fileDropped($files, $event)"
+                ng-multiple="false"
+                accept="'image/*'"
+                ng-accept="'image/*'">
+          Select Image
+        </button>
+      </div>
+      <div ng-class="{'ng-hide': state != 'cropping'}"></div>
+
     </div>
     <div class="ngdialog-buttons">
       <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog()">Cancel</button>
-      <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="cropAndClose()">Crop and Save</button>
+      <button ng-class="{'ng-hide': state === 'upload'}" type="button" class="ngdialog-button ngdialog-button-primary" ng-click="cropAndClose()">Crop and Save</button>
     </div>
   </script>
 
@@ -41,6 +65,7 @@
       ngCrop is a simple, drop in angular service that allows for easy image
       cropping. Use it for your avatar upload and crop needs!
     </p>
+    <img ng-if="imgSrc" ng-src="{{imgSrc}}" alt=""/>
     <button class="demo-cta" ng-click="show()">Show Cropper</button>
   </div>
 </section>
